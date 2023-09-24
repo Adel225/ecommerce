@@ -10,7 +10,7 @@
     "start" : "node index.js"
   },
   "engines": {
-    "node" : "20.5.0"
+    "node" : "18.18.0"
   },
   "keywords": [],
   "author": "",

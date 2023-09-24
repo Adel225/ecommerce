@@ -169,7 +169,7 @@ export const cancelOrder = asyncHandler(async (req,res,next) => {
    
 ///     webhook       ///
 
-export const orderWebhokk = asyncHandler(async (request, response) => {
+export const orderWebhook = asyncHandler(async (request, response) => {
      const sig = request.headers['stripe-signature'];
      const stripe = new Stripe(process.env.STRIPE_KEY);
         let event;

@@ -1,4 +1,4 @@
-import mongoose ,{Schema } from "mongoose"
+import mongoose ,{Schema, Types } from "mongoose"
 
 const productSchema = new Schema({
     title: {
@@ -7,6 +7,11 @@ const productSchema = new Schema({
         trim : true,
         min : [10 , "too short product name"]
     },
+    reviews : [{
+        id : {
+            ref : "Review",
+            type : Types.ObjectId}
+    }],
     slug : {
         type: String,
         lowercase: true

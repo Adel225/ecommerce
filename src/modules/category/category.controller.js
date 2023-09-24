@@ -61,7 +61,7 @@ export const deleteCategory = asyncHandler(async (req,res,next) => {
     if (!result) {
         return next(new Error("something went wrong!", { cause : 401}))
     }
-    await categoryModel.deleteOne({_id : id})
+    await category.remove();
     return res.status(200).json({success: true , msg : "category deleted successfully" })
 });
 

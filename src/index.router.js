@@ -5,6 +5,7 @@ import productRouter from './modules/product/product.router.js'
 import copounRouter from './modules/copoun/copoun.router.js'
 import cartRouter from './modules/cart/cart.router.js'
 import orderRouter from './modules/order/order.router.js'
+import reviewRouter from './modules/review/review.router.js'
 import morgan from 'morgan'
 import cors from 'cors'
 
@@ -47,6 +48,7 @@ const bootstrab = (app,express) => {
     app.use("/copoun" , copounRouter);
     app.use("/cart" , cartRouter);
     app.use("/order" , orderRouter);
+    app.use("/review" , reviewRouter);
 
     app.all("*" , (req,res,next) => {
         return next(new Error("page not found" , {cause : 404}))

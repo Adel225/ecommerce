@@ -1,4 +1,5 @@
 import mongoose ,{Schema } from "mongoose"
+import subcategoryModel from "./sub-category.model.js"
 
 const categorySchema = new Schema({
     name: {
@@ -27,6 +28,10 @@ categorySchema.virtual("subcategory" , {
     ref: "Subcategory",
     localField: "_id",
     foreignField: "category"
+})
+
+categorySchema.pre("remove" , async function() {
+    await subcategoryModel.deleteMany({category : this._id})
 })
 
 const categoryModel = mongoose.model("Category", categorySchema)

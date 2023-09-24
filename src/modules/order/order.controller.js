@@ -184,11 +184,14 @@ export const orderWebhook = asyncHandler(async (request, response) => {
             const orderId = event.data.object.metadata.order_id;    
             if (event.type === "checkout.session.completed") {
                 await orderModel.findOneAndUpdate({_id : orderId} , {status : "visa paied"});
+                // update stock 
+                // clear cart 
                 return ;
             }
             await orderModel.findOneAndUpdate({_id : orderId} , {status : "failed to pay"});
             return ;
 
-// Return a 200 response to acknowledge receipt of the event
-response.send();
 })
+
+/// TODO : split the create order endpoint into two endpoints : { cash pay , visa pay }
+/// TODO : move the clear cart and update stock functions from create order endpoint => webhook at line 187  
